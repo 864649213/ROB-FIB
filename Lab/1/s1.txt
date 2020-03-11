@@ -1,0 +1,472 @@
+a = 3, b = 0.5, c = -2.7
+
+a =
+
+     3
+
+
+b =
+
+    0.5000
+
+
+c =
+
+   -2.7000
+
+a = 3, b = 0.5, c = -2.7
+
+a =
+
+     3
+
+
+b =
+
+    0.5000
+
+
+c =
+
+   -2.7000
+
+A = [1 2 3 4; -1 0 5 2; -1 2 8 1; 0 5 3 1], A = [1 2 3 4; -1 0 5 2; -1 2 8 1; 0 5 3 1],A = [1 2 3 4; -1 0 5 2; -1 2 8 1; 0 5 3 1],  
+
+A =
+
+     1     2     3     4
+    -1     0     5     2
+    -1     2     8     1
+     0     5     3     1
+
+
+A =
+
+     1     2     3     4
+    -1     0     5     2
+    -1     2     8     1
+     0     5     3     1
+
+
+A =
+
+     1     2     3     4
+    -1     0     5     2
+    -1     2     8     1
+     0     5     3     1
+
+A = [1 2 3 4; -1 0 5 2; -1 2 8 1; 0 5 3 1], 
+
+A =
+
+     1     2     3     4
+    -1     0     5     2
+    -1     2     8     1
+     0     5     3     1
+
+a*v, u*v, u.*v, u*v'
+
+ans =
+
+   -6.0000
+    4.5000
+    3.0000
+
+{错误使用 <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+用于矩阵乘法的维度不正确。请检查并确保第一个矩阵中的列数与第二个矩阵中的行数匹配。要执行按元素相乘，请使用
+'.*'。
+} 
+u.*v, u*v'
+
+ans =
+
+    -2
+     3
+     3
+
+
+ans =
+
+   -2.0000    1.5000    1.0000
+   -4.0000    3.0000    2.0000
+   -6.0000    4.5000    3.0000
+
+u.*v, u*v'
+
+ans =
+
+    -2
+     3
+     3
+
+
+ans =
+
+   -2.0000    1.5000    1.0000
+   -4.0000    3.0000    2.0000
+   -6.0000    4.5000    3.0000
+
+
+A', inv(A), A+B, A-B, A*B, A.*B, w*A, A*w
+
+ans =
+
+     1    -1    -1     0
+     2     0     2     5
+     3     5     8     3
+     4     2     1     1
+
+
+ans =
+
+    0.5408   -1.1939    0.7347   -0.5102
+   -0.0612    0.0408   -0.1020    0.2653
+    0.0714   -0.2143    0.2857   -0.1429
+    0.0918    0.4388   -0.3469    0.1020
+
+
+ans =
+
+    1.2800    1.5500    3.8400    5.0100
+   -0.1700   -0.3000    4.5500    3.9900
+   -0.5400    2.8300    8.2900    4.0300
+         0    5.0000    3.0000    2.0000
+
+
+ans =
+
+    0.7200    2.4500    2.1600    2.9900
+   -1.8300    0.3000    5.4500    0.0100
+   -1.4600    1.1700    7.7100   -2.0300
+         0    5.0000    3.0000         0
+
+
+ans =
+
+    3.3200    1.4400    0.8100   18.0800
+    2.0200    4.6000    0.6100   16.1400
+    5.0600    6.4900    0.5800   28.2100
+    5.5300    0.9900   -1.3800   20.0400
+
+
+ans =
+
+    0.2800   -0.9000    2.5200    4.0400
+   -0.8300         0   -2.2500    3.9800
+   -0.4600    1.6600    2.3200    3.0300
+         0         0         0    1.0000
+
+
+ans =
+
+     0    35    59    21
+
+{错误使用 <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+用于矩阵乘法的维度不正确。请检查并确保第一个矩阵中的列数与第二个矩阵中的行数匹配。要执行按元素相乘，请使用
+'.*'。
+} 
+A', inv(A), A+B, A-B, A*B, A.*B, w*A, A*w
+
+ans =
+
+     1    -1    -1     0
+     2     0     2     5
+     3     5     8     3
+     4     2     1     1
+
+
+ans =
+
+    0.5408   -1.1939    0.7347   -0.5102
+   -0.0612    0.0408   -0.1020    0.2653
+    0.0714   -0.2143    0.2857   -0.1429
+    0.0918    0.4388   -0.3469    0.1020
+
+
+ans =
+
+    1.2800    1.5500    3.8400    5.0100
+   -0.1700   -0.3000    4.5500    3.9900
+   -0.5400    2.8300    8.2900    4.0300
+         0    5.0000    3.0000    2.0000
+
+
+ans =
+
+    0.7200    2.4500    2.1600    2.9900
+   -1.8300    0.3000    5.4500    0.0100
+   -1.4600    1.1700    7.7100   -2.0300
+         0    5.0000    3.0000         0
+
+
+ans =
+
+    3.3200    1.4400    0.8100   18.0800
+    2.0200    4.6000    0.6100   16.1400
+    5.0600    6.4900    0.5800   28.2100
+    5.5300    0.9900   -1.3800   20.0400
+
+
+ans =
+
+    0.2800   -0.9000    2.5200    4.0400
+   -0.8300         0   -2.2500    3.9800
+   -0.4600    1.6600    2.3200    3.0300
+         0         0         0    1.0000
+
+
+ans =
+
+     0    35    59    21
+
+{错误使用 <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+用于矩阵乘法的维度不正确。请检查并确保第一个矩阵中的列数与第二个矩阵中的行数匹配。要执行按元素相乘，请使用
+'.*'。
+} 
+A(2,4), A(2, :), B(:, 4), B(1:3, 1:3)
+
+ans =
+
+     2
+
+
+ans =
+
+    -1     0     5     2
+
+
+ans =
+
+    1.0100
+    1.9900
+    3.0300
+    1.0000
+
+
+ans =
+
+    0.2800   -0.4500    0.8400
+    0.8300   -0.3000   -0.4500
+    0.4600    0.8300    0.2900
+
+zeros(3)
+
+ans =
+
+     0     0     0
+     0     0     0
+     0     0     0
+
+ones(3)
+
+ans =
+
+     1     1     1
+     1     1     1
+     1     1     1
+
+eye(3)
+
+ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+
+rand(4)
+
+ans =
+
+    0.8147    0.6324    0.9575    0.9572
+    0.9058    0.0975    0.9649    0.4854
+    0.1270    0.2785    0.1576    0.8003
+    0.9134    0.5469    0.9706    0.1419
+
+radn(4)
+{函数或变量 'radn' 无法识别。
+} 
+randn(4)
+
+ans =
+
+   -0.1241    0.6715    0.4889    0.2939
+    1.4897   -1.2075    1.0347   -0.7873
+    1.4090    0.7172    0.7269    0.8884
+    1.4172    1.6302   -0.3034   -1.1471
+
+magic(3)
+
+ans =
+
+     8     1     6
+     3     5     7
+     4     9     2
+
+help eig
+ <strong>eig</strong>    Eigenvalues and eigenvectors.
+    E = <strong>eig</strong>(A) produces a column vector E containing the eigenvalues of 
+    a square matrix A.
+ 
+    [V,D] = <strong>eig</strong>(A) produces a diagonal matrix D of eigenvalues and 
+    a full matrix V whose columns are the corresponding eigenvectors  
+    so that A*V = V*D.
+  
+    [V,D,W] = <strong>eig</strong>(A) also produces a full matrix W whose columns are the
+    corresponding left eigenvectors so that W'*A = D*W'.
+ 
+    [...] = <strong>eig</strong>(A,'nobalance') performs the computation with balancing
+    disabled, which sometimes gives more accurate results for certain
+    problems with unusual scaling. If A is symmetric, <strong>eig</strong>(A,'nobalance')
+    is ignored since A is already balanced.
+ 
+    [...] = <strong>eig</strong>(A,'balance') is the same as <strong>eig</strong>(A).
+ 
+    E = <strong>eig</strong>(A,B) produces a column vector E containing the generalized 
+    eigenvalues of square matrices A and B.
+ 
+    [V,D] = <strong>eig</strong>(A,B) produces a diagonal matrix D of generalized
+    eigenvalues and a full matrix V whose columns are the corresponding
+    eigenvectors so that A*V = B*V*D.
+ 
+    [V,D,W] = <strong>eig</strong>(A,B) also produces a full matrix W whose columns are the
+    corresponding left eigenvectors so that W'*A = D*W'*B.
+ 
+    [...] = <strong>eig</strong>(A,B,'chol') is the same as <strong>eig</strong>(A,B) for symmetric A and
+    symmetric positive definite B.  It computes the generalized eigenvalues
+    of A and B using the Cholesky factorization of B.
+ 
+    [...] = <strong>eig</strong>(A,B,'qz') ignores the symmetry of A and B and uses the QZ
+    algorithm. In general, the two algorithms return the same result,
+    however using the QZ algorithm may be more stable for certain problems.
+    The flag is ignored when A or B are not symmetric.
+ 
+    [...] = <strong>eig</strong>(...,'vector') returns eigenvalues in a column vector 
+    instead of a diagonal matrix.
+ 
+    [...] = <strong>eig</strong>(...,'matrix') returns eigenvalues in a diagonal matrix
+    instead of a column vector.
+ 
+    See also <a href="matlab:help condeig">condeig</a>, <a href="matlab:help eigs">eigs</a>, <a href="matlab:help ordeig">ordeig</a>.
+
+    <a href="matlab:doc eig">eig 的文档</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('eig')">名为 eig 的其他函数</a>
+
+[V, D] = eig(A)
+
+V =
+
+   -0.5400    0.4014   -0.9378   -0.9770
+   -0.3722    0.5861   -0.0647    0.1095
+   -0.6033   -0.0060   -0.0930   -0.1804
+   -0.4537   -0.7038   -0.3282    0.0289
+
+
+D =
+
+    9.0909         0         0         0
+         0   -3.1380         0         0
+         0         0    2.8355         0
+         0         0         0    1.2115
+
+A*V
+
+ans =
+
+   -4.9092   -1.2597   -2.6591   -1.1837
+   -3.3839   -1.8391   -0.1835    0.1327
+   -5.4845    0.0189   -0.2636   -0.2186
+   -4.1248    2.2085   -0.9307    0.0350
+
+V*D
+
+ans =
+
+   -4.9092   -1.2597   -2.6591   -1.1837
+   -3.3839   -1.8391   -0.1835    0.1327
+   -5.4845    0.0189   -0.2636   -0.2186
+   -4.1248    2.2085   -0.9307    0.0350
+
+[V, D] = eig(B)
+
+V =
+
+  -0.6913 + 0.0000i  -0.1052 + 0.5014i  -0.1052 - 0.5014i   0.6888 + 0.0000i
+  -0.2027 + 0.0000i   0.6923 + 0.0000i   0.6923 + 0.0000i   0.2032 + 0.0000i
+  -0.6936 + 0.0000i  -0.1009 - 0.4981i  -0.1009 + 0.4981i   0.6959 + 0.0000i
+   0.0000 + 0.0000i   0.0000 + 0.0000i   0.0000 + 0.0000i   0.0028 + 0.0000i
+
+
+D =
+
+   0.9909 + 0.0000i   0.0000 + 0.0000i   0.0000 + 0.0000i   0.0000 + 0.0000i
+   0.0000 + 0.0000i  -0.3605 + 0.9248i   0.0000 + 0.0000i   0.0000 + 0.0000i
+   0.0000 + 0.0000i   0.0000 + 0.0000i  -0.3605 - 0.9248i   0.0000 + 0.0000i
+   0.0000 + 0.0000i   0.0000 + 0.0000i   0.0000 + 0.0000i   1.0000 + 0.0000i
+
+A*V
+
+ans =
+
+  -3.1774 + 0.0000i   0.9767 - 0.9928i   0.9767 + 0.9928i   3.1942 + 0.0000i
+  -2.7768 + 0.0000i  -0.3995 - 2.9917i  -0.3995 + 2.9917i   2.7962 + 0.0000i
+  -5.2630 + 0.0000i   0.6824 - 4.4858i   0.6824 + 4.4858i   5.2875 + 0.0000i
+  -3.0941 + 0.0000i   3.1588 - 1.4942i   3.1588 + 1.4942i   3.1065 + 0.0000i
+
+V*D
+
+ans =
+
+  -0.6850 + 0.0000i  -0.4258 - 0.2780i  -0.4258 + 0.2780i   0.6888 + 0.0000i
+  -0.2008 + 0.0000i  -0.2496 + 0.6403i  -0.2496 - 0.6403i   0.2032 + 0.0000i
+  -0.6873 + 0.0000i   0.4970 + 0.0862i   0.4970 - 0.0862i   0.6959 + 0.0000i
+   0.0000 + 0.0000i   0.0000 + 0.0000i   0.0000 + 0.0000i   0.0028 + 0.0000i
+
+B
+
+B =
+
+    0.2800   -0.4500    0.8400    1.0100
+    0.8300   -0.3000   -0.4500    1.9900
+    0.4600    0.8300    0.2900    3.0300
+         0         0         0    1.0000
+
+A = [2 -1 3; 1 2 2; -1 5 -2], B = [11.5; 6; -9.5]
+
+A =
+
+     2    -1     3
+     1     2     2
+    -1     5    -2
+
+
+B =
+
+   11.5000
+    6.0000
+   -9.5000
+
+X = A\B
+
+X =
+
+    1.0000
+   -0.5000
+    3.0000
+
+A*X
+
+ans =
+
+   11.5000
+    6.0000
+   -9.5000
+
+B
+
+B =
+
+   11.5000
+    6.0000
+   -9.5000
+
+diary off

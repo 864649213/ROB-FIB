@@ -1,0 +1,722 @@
+p=[1,2,3]'
+
+p =
+
+     1
+     2
+     3
+
+help transl
+ <strong>transl</strong> Create or unpack an SE(3) translational homogeneous transform
+ 
+  Create a translational SE(3) matrix::
+ 
+  T = <strong>transl</strong>(X, Y, Z) is an SE(3) homogeneous transform (4x4) representing
+  a pure translation of X, Y and Z.
+ 
+  T = <strong>transl</strong>(P) is an SE(3) homogeneous transform (4x4) representing a
+  translation of P=[X,Y,Z]. If P (Mx3) it represents a sequence and T
+  (4x4xM) is a sequence of homogeneous transforms such that T(:,:,i)
+  corresponds to the i'th row of P.
+ 
+  Extract the translational part of an SE(3) matrix::
+ 
+  P = <strong>transl</strong>(T) is the translational part of a homogeneous transform T as a
+  3-element column vector.  If T (4x4xM) is a homogeneous transform
+  sequence the rows of P (Mx3) are the translational component of the
+  corresponding transform in the sequence.
+ 
+  [X,Y,Z] = <strong>transl</strong>(T) is the translational part of a homogeneous transform
+  T as three components.  If T (4x4xM) is a homogeneous transform sequence
+  then X,Y,Z (1xM) are the translational components of the corresponding
+  transform in the sequence.
+ 
+  Notes::
+  - Somewhat unusually this function performs a function and its inverse.  An
+    historical anomaly.
+ 
+  See also <a href="matlab:help SE3/t">SE3/t</a>, <a href="matlab:help SE3/transl">SE3/transl</a>.
+
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('transl')">名为 transl 的其他函数</a>
+
+
+
+P = transl(p)
+
+P =
+
+     1     0     0     1
+     0     1     0     2
+     0     0     1     3
+     0     0     0     1
+
+help SE3
+ <strong>SE3</strong> SE(3) homogeneous transformation class
+ 
+  This subclasss of <strong>SE3</strong> < SO3 < RTBPose is an object that represents an SE(3)
+  rigid-body motion
+ 
+  T = <strong>SE3</strong>() is an SE(3) homogeneous transformation (4x4) representing zero
+  translation and rotation.
+ 
+  T = <strong>SE3</strong>(X,Y,Z) as above represents a pure translation.
+ 
+  T = <strong>SE3</strong>.Rx(THETA) as above represents a pure rotation about the x-axis.
+ 
+ 
+  Constructor methods::
+   <strong>SE3</strong>              general constructor
+   <strong>SE3</strong>.exp          exponentiate an se(3) matrix                         
+   <strong>SE3</strong>.angvec       rotation about vector
+   <strong>SE3</strong>.eul          rotation defined by Euler angles
+   <strong>SE3</strong>.oa           rotation defined by o- and a-vectors
+   <strong>SE3</strong>.rpy          rotation defined by roll-pitch-yaw angles
+   <strong>SE3</strong>.Rx           rotation about x-axis
+   <strong>SE3</strong>.Ry           rotation about y-axis
+   <strong>SE3</strong>.Rz           rotation about z-axis
+   <strong>SE3</strong>.rand         random transformation
+   new              new <strong>SE3</strong> object
+ 
+  Information and test methods::
+   dim*             returns 4
+   isSE*            returns true
+   issym*           true if rotation matrix has symbolic elements
+   isidentity       true for null motion
+   <strong>SE3</strong>.isa          check if matrix is SO2
+ 
+  Display and print methods::
+   plot*            graphically display coordinate frame for pose
+   animate*         graphically animate coordinate frame for pose
+   print*           print the pose in single line format
+   display*         print the pose in human readable matrix form
+   char*            convert to human readable matrix as a string
+ 
+  Operation methods::
+   det              determinant of matrix component
+   eig              eigenvalues of matrix component
+   log              logarithm of rotation matrixr>=0 && r<=1ub
+   inv              inverse
+   simplify*        apply symbolic simplication to all elements
+   Ad               adjoint matrix (6x6)
+   increment        update pose based on incremental motion
+   interp           interpolate poses
+   velxform         compute velocity transformation
+   interp           interpolate between poses
+   ctraj            Cartesian motion
+ 
+  Conversion methods::
+   <strong>SE3</strong>.check        convert object or matrix to <strong>SE3</strong> object
+   double           convert to rotation matrix
+   R                return rotation matrix
+   SO3              return rotation part as an SO3 object 
+   T                convert to homogeneous transformation matrix
+   UnitQuaternion   convert to UnitQuaternion object
+   toangvec         convert to rotation about vector form
+   toeul            convert to Euler angles
+   torpy            convert to roll-pitch-yaw angles
+   t                translation column vector
+   tv               translation column vector for vector of <strong>SE3</strong>
+ 
+  Compatibility methods::
+   homtrans         apply to vector
+   isrot*           returns false
+   ishomog*         returns true
+   tr2rt*       convert to rotation matrix and translation vector
+   t2r*         convert to rotation matrix
+   trprint*         print single line representation
+   trplot*          plot coordinate frame
+   tranimate*       animate coordinate frame
+   tr2eul           convert to Euler angles
+   tr2rpy           convert to roll-pitch-yaw angles
+   trnorm           normalize the rotation matrix
+   transl           return translation as a row vector  
+ 
+  * means inherited from RTBPose
+ 
+  Operators::
+   +               elementwise addition, result is a matrix
+   -               elementwise subtraction, result is a matrix
+   *               multiplication within group, also group x vector
+   .*              multiplication within group followed by normalization
+   /               multiply by inverse
+   ./              multiply by inverse followed by normalization
+   ==          test equality
+   ~=          test inequality
+ 
+  Properties::
+   n              normal (x) vector
+   o              orientation (y) vector
+   a              approach (z) vector
+   t              translation vector
+ 
+  For single <strong>SE3</strong> objects only, for a vector of <strong>SE3</strong> objects use the
+  equivalent methods
+  t       translation as a 3x1 vector (read/write)
+  R       rotation as a 3x3 matrix (read/write)
+ 
+  Methods::
+  tv      return translations as a 3xN vector
+ 
+  Notes::
+  - The properies R, t are implemented as MATLAB dependent properties.
+    When applied to a vector of <strong>SE3</strong> object the result is a comma-separated
+    list which can be converted to a matrix by enclosing it in square
+    brackets, eg [T.t] or more conveniently using the method T.transl
+ 
+  See also <a href="matlab:help SE3/SO3">SO3</a>, <a href="matlab:help SE2">SE2</a>, <a href="matlab:help RTBPose">RTBPose</a>.
+
+    <a href="matlab:doc SE3">SE3 的文档</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('SE3')">名为 SE3 的其他函数</a>
+
+P = SE3(p);
+P = SE3(p)
+ 
+
+P = 
+         1         0         0         1
+         0         1         0         2
+         0         0         1         3
+         0         0         0         1
+p=[1 2 3;4 5 6; 7 8 9]
+
+p =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+P = SE3(p)
+ 
+
+P(1) = 
+         1         0         0         1
+         0         1         0         2
+         0         0         1         3
+         0         0         0         1
+
+P(2) = 
+         1         0         0         4
+         0         1         0         5
+         0         0         1         6
+         0         0         0         1
+
+P(3) = 
+         1         0         0         7
+         0         1         0         8
+         0         0         1         9
+         0         0         0         1
+p = transl(P)
+
+p =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+p = SE3(P)
+ 
+
+p(1) = 
+         1         0         0         1
+         0         1         0         2
+         0         0         1         3
+         0         0         0         1
+
+p(2) = 
+         1         0         0         4
+         0         1         0         5
+         0         0         1         6
+         0         0         0         1
+
+p(3) = 
+         1         0         0         7
+         0         1         0         8
+         0         0         1         9
+         0         0         0         1
+p = transl(P)
+
+p =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+zyz=[0.1 0.2 0.3]
+
+zyz =
+
+    0.1000    0.2000    0.3000
+
+zyz=[0.1 0.2 0.3]
+
+zyz =
+
+    0.1000    0.2000    0.3000
+
+R=rotz(zyz(1))*roty(zyz(2))*rotz(zyz(3))
+
+R =
+
+    0.9021   -0.3836    0.1977
+    0.3875    0.9216    0.0198
+   -0.1898    0.0587    0.9801
+
+R=eul2r(zyz)
+
+R =
+
+    0.9021   -0.3836    0.1977
+    0.3875    0.9216    0.0198
+   -0.1898    0.0587    0.9801
+
+help eul2r
+ <strong>eul2r</strong> Convert Euler angles to rotation matrix
+ 
+  R = <strong>eul2r</strong>(PHI, THETA, PSI, OPTIONS) is an SO(3) orthonornal rotation
+  matrix (3x3) equivalent to the specified Euler angles.  These correspond
+  to rotations about the Z, Y, Z axes respectively. If PHI, THETA, PSI are
+  column vectors (Nx1) then they are assumed to represent a trajectory and
+  R is a three-dimensional matrix (3x3xN), where the last index corresponds
+  to rows of PHI, THETA, PSI.
+ 
+  R = <strong>eul2r</strong>(EUL, OPTIONS) as above but the Euler angles are taken from the
+  vector (1x3)  EUL = [PHI THETA PSI]. If EUL is a matrix (Nx3) then R is a
+  three-dimensional matrix (3x3xN), where the last index corresponds to
+  rows of RPY which are assumed to be [PHI,THETA,PSI].
+ 
+  Options::
+   'deg'      Angles given in degrees (radians default)
+ 
+  Note::
+  - The vectors PHI, THETA, PSI must be of the same length.
+ 
+  See also <a href="matlab:help eul2tr">eul2tr</a>, <a href="matlab:help rpy2tr">rpy2tr</a>, <a href="matlab:help tr2eul">tr2eul</a>, <a href="matlab:help SO3.eul">SO3.eul</a>.
+
+
+
+zyzs=[0.1 0.2 0.3;0.4 0.5 0.6;0.7 0.8 0.9]
+
+zyzs =
+
+    0.1000    0.2000    0.3000
+    0.4000    0.5000    0.6000
+    0.7000    0.8000    0.9000
+
+
+R=eul2r(zyzs)
+
+R(:,:,1) =
+
+    0.9021   -0.3836    0.1977
+    0.3875    0.9216    0.0198
+   -0.1898    0.0587    0.9801
+
+
+R(:,:,2) =
+
+    0.4472   -0.7778    0.4416
+    0.8021    0.5672    0.1867
+   -0.3957    0.2707    0.8776
+
+
+R(:,:,3) =
+
+   -0.1734   -0.8179    0.5487
+    0.8781    0.1239    0.4621
+   -0.4459    0.5619    0.6967
+
+help UnitQuaternion.eul(zyz)
+
+未找到 UnitQuaternion.eul(zyz)。
+
+请使用帮助浏览器的搜索字段<a href="matlab:docsearch UnitQuaternion.eul(zyz)">搜索文档</a>，或者
+键入 "<a href="matlab:help help">help help</a>" 获取有关帮助命令选项的信息，例如方法的帮助。
+
+help UnitQuaternion.eul
+ <strong>UnitQuaternion.eul</strong> Construct from Euler angles
+ 
+  Q = <strong>UnitQuaternion.eul</strong>(PHI, THETA, PSI, OPTIONS) is a UnitQuaternion
+  representing rotation equivalent to the specified Euler angles
+  angles. These correspond to rotations about the Z, Y, Z axes
+  respectively.
+ 
+  Q = <strong>UnitQuaternion.eul</strong>(<strong>eul</strong>, OPTIONS) as above but the Euler angles are
+  taken from the vector (1x3) <strong>eul</strong> = [PHI THETA PSI]. If <strong>eul</strong> is a matrix
+  (Nx3) then Q is a vector (1xN) of UnitQuaternion objects where the index
+  corresponds to rows of <strong>eul</strong> which are assumed to be [PHI,THETA,PSI].
+  
+  Options::
+  'deg'   Compute angles in degrees (radians default)
+ 
+  Notes::
+  - Is vectorised, see eul2r for details.
+ 
+  See also <a href="matlab:help UnitQuaternion.rpy">UnitQuaternion.rpy</a>, <a href="matlab:help eul2r">eul2r</a>.
+
+
+Q=UnitQuaternion.eul(zyz)
+ 
+Q = 
+ 
+0.97517 < 0.0099667, 0.099335, 0.19768 >
+ 
+Q=UnitQuaternion.eul(zyz)
+ 
+Q = 
+ 
+0.97517 < 0.0099667, 0.099335, 0.19768 >
+ 
+Q.r
+{未识别类 'UnitQuaternion' 的方法、属性或字段 'r'。
+} 
+Q.R
+
+ans =
+
+    0.9021   -0.3836    0.1977
+    0.3875    0.9216    0.0198
+   -0.1898    0.0587    0.9801
+
+Q=UnitQuaternion.rpy(zyz)
+ 
+Q = 
+ 
+0.98335 < 0.034271, 0.10602, 0.14357 >
+ 
+Q.R
+
+ans =
+
+    0.9363   -0.2751    0.2184
+    0.2896    0.9564   -0.0370
+   -0.1987    0.0978    0.9752
+
+Q=UnitQuaternion.angvec(zyz)
+{输入参数的数目不足。
+
+出错 <a href="matlab:matlab.internal.language.introspective.errorDocCallback('UnitQuaternion.angvec', 'D:\Fib\ROB\Libs\rvctools\robot\UnitQuaternion.m', 1009)" style="font-weight:bold">UnitQuaternion.angvec</a> (<a href="matlab: opentoline('D:\Fib\ROB\Libs\rvctools\robot\UnitQuaternion.m',1009,0)">line 1009</a>)
+            assert(isvec(v), 'RTB:UnitQuaternion:bad arg', 'must be a
+            3-vector');
+} 
+help UnitQuaternion
+ <strong>UnitQuaternion</strong> Unit quaternion class
+ 
+  A <strong>UnitQuaternion</strong> is a compact method of representing a 3D rotation that has
+  computational advantages including speed and numerical robustness.
+  A quaternion has 2 parts, a scalar s, and a vector v and is typically
+  written: q = s <vx, vy, vz>.
+ 
+  A <strong>UnitQuaternion</strong> is one for which s^2+vx^2+vy^2+vz^2 = 1.  It can be
+  considered as a rotation by an angle theta about a unit-vector V in space where
+ 
+          q = cos (theta/2) < v sin(theta/2)>
+ 
+  Constructors::
+   <strong>UnitQuaternion</strong>          general constructor
+   <strong>UnitQuaternion</strong>.eul      constructor, from Euler angles
+   <strong>UnitQuaternion</strong>.rpy      constructor, from roll-pitch-yaw angles
+   <strong>UnitQuaternion</strong>.angvec   constructor, from (angle and vector)
+   <strong>UnitQuaternion</strong>.omega    constructor for angle*vector
+   <strong>UnitQuaternion</strong>.Rx       constructor, from x-axis rotation
+   <strong>UnitQuaternion</strong>.Ry       constructor, from y-axis rotation
+   <strong>UnitQuaternion</strong>.Rz       constructor, from z-axis rotation
+   <strong>UnitQuaternion</strong>.vec      constructor, from 3-vector
+ 
+  Display methods::
+   display                 print in human readable form
+   plot                    plot a coordinate frame representing orientation of quaternion
+   animate                 animates a coordinate frame representing changing orientation
+                           of quaternion sequence
+  Operation methods::
+   inv                     inverse
+   conj                    conjugate
+   unit                    unitized quaternion
+   dot                     derivative of quaternion with angular velocity
+   norm                    norm, or length
+   inner                   inner product
+   angle                   angle between two quaternions
+   interp                  interpolation (slerp) between two quaternions
+   <strong>UnitQuaternion</strong>.qvmul    multiply unit-quaternions in 3-vector form
+ 
+  Conversion methods::
+   char                    convert to string
+   double                  convert to 4-vector
+   matrix                  convert to 4x4 matrix
+   tovec                   convert to 3-vector 
+   R                       convert to 3x3 rotation matrix
+   T                       convert to 4x4 homogeneous transform matrix
+   toeul                   convert to Euler angles
+   torpy                   convert to roll-pitch-yaw angles
+   toangvec                convert to angle vector form
+   SO3                     convert to SO3 class
+   SE3                     convert to SE3 class
+ 
+  Overloaded operators::
+   q*q2                    quaternion (Hamilton) product
+   q.*q2                   quaternion (Hamilton) product followed by unitization
+   q*s                     quaternion times scalar
+   q/q2                    q*q2.inv
+   q./q2                   q*q2.inv followed by unitization
+   q/s                     quaternion divided by scalar
+   q^n                     q to power n (integer only)
+   q+q2                    elementwise sum of quaternion elements (result is a Quaternion)
+   q-q2                    elementwise difference of quaternion elements (result is a Quaternion)
+   q1==q2                  test for quaternion equality
+   q1~=q2                  test for quaternion inequality
+ 
+  Properties (read only)::
+   s         real part
+   v         vector part
+ 
+  Notes::
+  - Many methods and operators are inherited from the Quaternion superclass.
+  - <strong>UnitQuaternion</strong> objects can be used in vectors and arrays.
+  - A subclass of Quaternion
+  - The + and - operators return a Quaternion object not a <strong>UnitQuaternion</strong>
+  since the result is not, in general, a valid <strong>UnitQuaternion</strong>.
+  - For display purposes a Quaternion differs from a <strong>UnitQuaternion</strong> by
+    using << >> notation rather than < >.
+  - To a large extent polymorphic with the SO3 class.
+ 
+  References::
+  - Animating rotation with quaternion curves,
+    K. Shoemake,
+    in Proceedings of ACM SIGGRAPH, (San Fran cisco), pp. 245-254, 1985.
+  - On homogeneous transforms, quaternions, and computational efficiency,
+    J. Funda, R. Taylor, and R. Paul,
+    IEEE Transactions on Robotics and Automation, vol. 6, pp. 382-388, June 1990.
+  - Robotics, Vision & Control,
+    P. Corke, Springer 2011.
+ 
+  See also <a href="matlab:help Quaternion">Quaternion</a>, <a href="matlab:help UnitQuaternion/SO3">SO3</a>.
+
+    <a href="matlab:doc UnitQuaternion">UnitQuaternion 的文档</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('UnitQuaternion')">名为 UnitQuaternion 的其他函数</a>
+
+zyz=[0.1 0.2 0.3]
+
+zyz =
+
+    0.1000    0.2000    0.3000
+
+Q=UnitQuaternion.eul(zyz)
+ 
+Q = 
+ 
+0.97517 < 0.0099667, 0.099335, 0.19768 >
+ 
+Q.eurl
+{未识别类 'UnitQuaternion' 的方法、属性或字段 'eurl'。
+} 
+Q.eurl
+{未识别类 'UnitQuaternion' 的方法、属性或字段 'eurl'。
+} 
+Q.angvec
+{输入参数的数目不足。
+
+出错 <a href="matlab:matlab.internal.language.introspective.errorDocCallback('UnitQuaternion.angvec', 'D:\Fib\ROB\Libs\rvctools\robot\UnitQuaternion.m', 1009)" style="font-weight:bold">UnitQuaternion.angvec</a> (<a href="matlab: opentoline('D:\Fib\ROB\Libs\rvctools\robot\UnitQuaternion.m',1009,0)">line 1009</a>)
+            assert(isvec(v), 'RTB:UnitQuaternion:bad arg', 'must be a 3-vector');
+} 
+Q.T
+
+ans =
+
+    0.9021   -0.3836    0.1977         0
+    0.3875    0.9216    0.0198         0
+   -0.1898    0.0587    0.9801         0
+         0         0         0    1.0000
+
+T=SO3.eul(zyz)
+ 
+
+T = 
+    0.9021   -0.3836    0.1977
+    0.3875    0.9216    0.0198
+   -0.1898    0.0587    0.9801
+help SO3
+ <strong>SO3</strong> Representation of 3D rotation
+ 
+  This subclasss of RTBPose is an object that represents an SO(3) rotation
+ 
+  Constructor methods::
+   <strong>SO3</strong>              general constructor
+   <strong>SO3</strong>.exp          exponentiate an so(3) matrix                         
+   <strong>SO3</strong>.angvec       rotation about vector
+   <strong>SO3</strong>.eul          rotation defined by Euler angles
+   <strong>SO3</strong>.oa           rotation defined by o- and a-vectors
+   <strong>SO3</strong>.rpy          rotation defined by roll-pitch-yaw angles
+   <strong>SO3</strong>.Rx           rotation about x-axis
+   <strong>SO3</strong>.Ry           rotation about y-axis
+   <strong>SO3</strong>.Rz           rotation about z-axis
+   <strong>SO3</strong>.rand         random orientation
+   new              new <strong>SO3</strong> object
+ 
+  Information and test methods::
+   dim*             returns 3
+   isSE*            returns false
+   issym*           true if rotation matrix has symbolic elements
+ 
+  Display and print methods::
+   plot*            graphically display coordinate frame for pose
+   animate*         graphically animate coordinate frame for pose
+   print*           print the pose in single line format
+   display*         print the pose in human readable matrix form
+   char*            convert to human readable matrix as a string
+ 
+  Operation methods::
+   det              determinant of matrix component
+   eig              eigenvalues of matrix component
+   log              logarithm of rotation matrix
+   inv              inverse
+   simplify*        apply symbolic simplication to all elements
+   interp           interpolate between rotations
+ 
+  Conversion methods::
+   <strong>SO3</strong>.check        convert object or matrix to <strong>SO3</strong> object
+   theta            return rotation angle
+   double           convert to rotation matrix
+   R                convert to rotation matrix
+   SE3              convert to SE3 object with zero translation
+   T                convert to homogeneous transformation matrix with zero translation
+   UnitQuaternion   convert to UnitQuaternion object
+   toangvec         convert to rotation about vector form
+   toeul            convert to Euler angles
+   torpy            convert to roll-pitch-yaw angles
+ 
+  Compatibility methods::
+   isrot*           returns true
+   ishomog*         returns false
+   trprint*         print single line representation
+   trplot*          plot coordinate frame
+   tranimate*       animate coordinate frame
+   tr2eul           convert to Euler angles
+   tr2rpy           convert to roll-pitch-yaw angles
+   trnorm           normalize the rotation matrix
+ 
+  Static methods::
+   check            convert object or matrix to SO2 object
+   exp              exponentiate an so(3) matrix                         
+   isa              check if matrix is 3x3
+   angvec           rotation about vector
+   eul              rotation defined by Euler angles
+   oa               rotation defined by o- and a-vectors
+   rpy              rotation defined by roll-pitch-yaw angles
+   Rx               rotation about x-axis
+   Ry               rotation about y-axis
+   Rz               rotation about z-axis
+ 
+  * means inherited from RTBPose
+ 
+  Operators::
+   +               elementwise addition, result is a matrix
+   -               elementwise subtraction, result is a matrix
+   *               multiplication within group, also group x vector
+   .*              multiplication within group followed by normalization
+   /               multiply by inverse
+   ./              multiply by inverse followed by normalization
+   ==          test equality
+   ~=          test inequality
+ 
+  Properties::
+   n              normal (x) vector
+   o              orientation (y) vector
+   a              approach (z) vector
+ 
+  See also <a href="matlab:help SE2">SE2</a>, <a href="matlab:help SO2">SO2</a>, <a href="matlab:help SO3/SE3">SE3</a>, <a href="matlab:help RTBPose">RTBPose</a>.
+
+    <a href="matlab:doc SO3">SO3 的文档</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('SO3')">名为 SO3 的其他函数</a>
+
+T=SO3.eul(zyz)
+ 
+
+T = 
+    0.9021   -0.3836    0.1977
+    0.3875    0.9216    0.0198
+   -0.1898    0.0587    0.9801
+T.t
+{未识别类 'SO3' 的方法、属性或字段 't'。
+} 
+T.toeul
+
+ans =
+
+    0.1000    0.2000    0.3000
+
+zyz
+
+zyz =
+
+    0.1000    0.2000    0.3000
+
+T.torpy
+
+ans =
+
+    0.0598    0.1910    0.4057
+
+T.toangvec
+Rotation: 0.446615 rad x [0.045005 0.448552 0.892623]
+Q = UnitQuaternion.eul(zyz)
+ 
+Q = 
+ 
+0.97517 < 0.0099667, 0.099335, 0.19768 >
+ 
+Q.toeurl
+{未识别类 'UnitQuaternion' 的方法、属性或字段 'toeurl'。
+} 
+Q.toeul
+
+ans =
+
+    0.1000    0.2000    0.3000
+
+Q.angvec
+{输入参数的数目不足。
+
+出错 <a href="matlab:matlab.internal.language.introspective.errorDocCallback('UnitQuaternion.angvec', 'D:\Fib\ROB\Libs\rvctools\robot\UnitQuaternion.m', 1009)" style="font-weight:bold">UnitQuaternion.angvec</a> (<a href="matlab: opentoline('D:\Fib\ROB\Libs\rvctools\robot\UnitQuaternion.m',1009,0)">line 1009</a>)
+            assert(isvec(v), 'RTB:UnitQuaternion:bad arg', 'must be a 3-vector');
+} 
+Q.toangvec
+Rotation: 0.446615 rad x [0.045005 0.448552 0.892623]
+Q.torpy
+
+ans =
+
+    0.0598    0.1910    0.4057
+
+Q.T
+
+ans =
+
+    0.9021   -0.3836    0.1977         0
+    0.3875    0.9216    0.0198         0
+   -0.1898    0.0587    0.9801         0
+         0         0         0    1.0000
+
+transl(Q.T)
+
+ans =
+
+     0
+     0
+     0
+
+t2r(Q.T)
+
+ans =
+
+    0.9021   -0.3836    0.1977
+    0.3875    0.9216    0.0198
+   -0.1898    0.0587    0.9801
+
+Q.R
+
+ans =
+
+    0.9021   -0.3836    0.1977
+    0.3875    0.9216    0.0198
+   -0.1898    0.0587    0.9801
+
+diary off
