@@ -1,0 +1,102 @@
+ Programa
+   Programa de robot
+     pila≔[1,1,1,2,2,2,2,3,3,3,3,3,3,4,4,4,4,5,5,5,5,5]
+     i≔0
+     var_1≔0
+     var_2≔0
+     var_3≔0
+     var_4≔0
+     var_5≔0
+     var_6≔0
+     var_7≔0
+     var_8≔0
+     var_9≔0
+     Bucle i<22
+       MoverJ
+         Punto_feeder
+         color≔pila[i]
+         i≔i+1
+       If color≟1
+         If var_1≤var_2 and var_1≤var_3
+           MoverJ
+             Punto_de_paso_1
+             var_1≔var_1+1
+         ElseIf var_2≤var_3
+           MoverJ
+             Punto_de_paso_2
+             var_2≔var_2+1
+         Else
+           MoverJ
+             Punto_de_paso_3
+             var_3≔var_3+1
+       ElseIf color≟2
+         If var_6≤var_9
+           If var_6≟0
+             MoverJ
+               Punto_de_paso_9
+           Else
+             MoverJ
+               Punto_de_pas_10
+           var_6≔var_6+1
+         Else
+           If var_9≟0
+             MoverJ
+               Punto_de_pas_11
+           Else
+             MoverJ
+               Punto_de_pas_12
+           var_9≔var_9+1
+       ElseIf color≟3
+         If var_7≤var_8
+           If var_7≟0
+             MoverJ
+               Punto_de_pas_13
+           ElseIf var_7≟1
+             MoverJ
+               Punto_de_pas_14
+           Else
+             MoverJ
+               Punto_de_pas_15
+           var_7≔var_7+1
+         Else
+           If var_8≟0
+             MoverJ
+               Punto_de_pas_16
+           ElseIf var_8≟1
+             MoverJ
+               Punto_de_pas_17
+           Else
+             MoverJ
+               Punto_de_pas_18
+           var_8≔var_8+1
+       ElseIf color≟4
+         If var_4≟0
+           MoverJ
+             Punto_de_pas_19
+         ElseIf var_4≟1
+           MoverJ
+             Punto_de_pas_20
+         ElseIf var_4≟2
+           MoverJ
+             Punto_de_pas_21
+         Else
+           MoverJ
+             Punto_de_pas_22
+         var_4≔var_4+1
+       Else
+         If var_5≟0
+           MoverJ
+             Punto_de_paso_4
+         ElseIf var_5≟1
+           MoverJ
+             Punto_de_paso_5
+         ElseIf var_5≟2
+           MoverJ
+             Punto_de_paso_6
+         ElseIf var_5≟3
+           MoverJ
+             Punto_de_paso_7
+         Else
+           MoverJ
+             Punto_de_paso_8
+         var_5≔var_5+1
